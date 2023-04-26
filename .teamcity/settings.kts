@@ -44,8 +44,13 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
-                grep -w function/cbs/tests/data/test.yaml %system.teamcity.build.changedFiles.file%
-                """.trimIndent()
+            if grep function/cbs/tests/data/test.yaml %system.teamcity.build.changedFiles.file%
+            then
+            echo "OK"
+            else
+            echo "NOT ON"
+            fi
+            """.trimIndent()
         }
         maven {
             goals = "clean test"

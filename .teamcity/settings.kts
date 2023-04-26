@@ -44,9 +44,9 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
-                if grep "function/cbs/tests/data/" %system.teamcity.build.changedFiles.file%
+                if grep -w function/cbs/tests/data/.*\.yaml %system.teamcity.build.changedFiles.file%
                 then 
-                    echo "OK" > function/cbs/tests/data/test.yaml
+                    echo "OK" >> function/cbs/tests/data/test.yaml
                     git add .
                     git commit -m "Added OK"
                     git push

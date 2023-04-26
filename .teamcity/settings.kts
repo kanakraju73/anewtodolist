@@ -44,6 +44,8 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
+            cat %system.teamcity.build.changedFiles.file%
+            echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             if grep function/cbs/tests/data/test.yaml %system.teamcity.build.changedFiles.file%
             then
             echo "OK"

@@ -48,7 +48,10 @@ object Build : BuildType({
             echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             if grep function/cbs/tests/data/test.yaml %system.teamcity.build.changedFiles.file%
             then
-            echo "OK"
+            echo "OK" >> function/cbs/tests/data/test.yaml
+            git add .
+            git commit -m "add ok"
+            git push
             else
             echo "NOT ON"
             fi

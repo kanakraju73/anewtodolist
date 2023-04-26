@@ -41,14 +41,14 @@ object Build : BuildType({
     }
 
     steps {
-        maven {
-            goals = "clean test"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-        }
         exec {
             name = "see changed files"
             path = "ls %system.teamcity.build.changedFiles.file%"
             param("script.content", "ls")
+        }
+        maven {
+            goals = "clean test"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
         }
     }
 

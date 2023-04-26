@@ -46,17 +46,6 @@ object Build : BuildType({
             scriptContent = """
             cat %system.teamcity.build.changedFiles.file%
             echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            if grep function/cbs/tests/data/test.yaml %system.teamcity.build.changedFiles.file%
-            then
-            git config --global user.email %github_username%
-            git config --global user.name "JAPAREJAMA"
-            echo "OK" >> function/cbs/tests/data/test.yaml
-            git add .
-            git commit -m "add ok"
-            git push https://%github_username%:%github_token%@github.com/kanakraju73/anewtodolist.git
-            else
-            echo "NOT ON"
-            fi
             """.trimIndent()
         }
         maven {

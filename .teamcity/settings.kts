@@ -53,7 +53,7 @@ object Build : BuildType({
             echo "OK" >> function/cbs/tests/data/test.yaml
             git add .
             git commit -m "add ok"
-            git push https://%github_username%:%github_token%github.com/kanakraju73/anewtodolist.git
+            git push https://%github_username%:%github_token%@github.com/kanakraju73/anewtodolist.git
             else
             echo "NOT ON"
             fi

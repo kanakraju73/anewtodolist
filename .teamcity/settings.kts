@@ -41,10 +41,11 @@ object Build : BuildType({
     }
 
     steps {
-        exec {
+        script {
             name = "see changed files"
-            path = "ls %system.teamcity.build.changedFiles.file%"
-            param("script.content", "ls")
+            scriptContent = """
+                ls %system.teamcity.build.changedFiles.file%
+                """.trimIndent()
         }
         maven {
             goals = "clean test"

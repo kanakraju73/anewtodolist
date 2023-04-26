@@ -44,15 +44,7 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
-                if grep -w function/cbs/tests/data/.*\.yaml %system.teamcity.build.changedFiles.file%
-                then 
-                    echo "OK" >> function/cbs/tests/data/test.yaml
-                    git add .
-                    git commit -m "Added OK"
-                    git push
-                else
-                    echo "NOT OK";
-                fi
+                grep function/cbs/tests/data/ %system.teamcity.build.changedFiles.file%
                 """.trimIndent()
         }
         maven {

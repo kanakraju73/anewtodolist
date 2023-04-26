@@ -44,7 +44,8 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
-                grep function/cbs/tests/data/ %system.teamcity.build.changedFiles.file%
+            grep --v
+                grep -w "function\/cbs\/tests\/data\/.*\.yaml" %system.teamcity.build.changedFiles.file%
                 """.trimIndent()
         }
         maven {

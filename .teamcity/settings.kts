@@ -44,7 +44,7 @@ object Build : BuildType({
         script {
             name = "see changed files"
             scriptContent = """
-                ls %system.teamcity.build.changedFiles.file%
+                cat %system.teamcity.build.changedFiles.file%
                 """.trimIndent()
         }
         maven {
